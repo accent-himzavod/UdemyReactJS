@@ -1,4 +1,4 @@
-//
+"use strict";
 
 //Задача №1
 let numberOfFilms;
