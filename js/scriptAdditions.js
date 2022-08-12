@@ -188,7 +188,7 @@ console.log(findMaxNumber(4,2,10,3));
 function fib(count) {
     let result = [0,1],
         resStr = '0';
-    if (count === 0 || !count.isInteger) {return resStr = '';}
+    if (count <= 0 || !Number.isInteger(count)) {return '';}
 
     for (let i = 2; i < count; i++){
         result[i] = result[i-1] + result[i-2]
@@ -201,4 +201,4 @@ function fib(count) {
     return resStr;      
 }
 
-console.log(fib(3));
+console.log(fib(12));
