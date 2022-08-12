@@ -1,0 +1,10 @@
+git log
+git status
+git checkout main 
+git checkout -b L32_obj
+git add .
+git commit -a -m "Lecture Object - done"
+git checkout main 
+git merge L32_obj 
+git push origin main 
+git branch -d L32_obj //delete branch L32_obj
