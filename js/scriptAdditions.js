@@ -113,8 +113,8 @@ function getTimeFromMinutes(timeLine) {
         hour = (timeLine / 60);
         hour = hour - (hour % 1);
     }
+    //minutes = timeLine % 60; //реалізація препода
     minutes = timeLine - (hour * 60);
-
     if (minutes < 0) {minutes = 0}
     
 
@@ -136,7 +136,7 @@ function getTimeFromMinutes(timeLine) {
     return `Это ${hourText} и ${minText}`
 }
 
-console.log(getTimeFromMinutes(151));
+console.log(getTimeFromMinutes(1510));
 console.log(21 % 10);
 
 // Место для второй задачи
@@ -170,5 +170,16 @@ function findMaxNumber(a,b,c,d) {
         }
     }
 }
-
+/* function findMaxNumber(a, b ,c, d) {
+    // Самое простое - это использовать Math.max :)
+    // А оптимизировать такую проверку мы научимся совсем скоро
+    if (typeof(a) !== 'number' ||
+        typeof(b) !== 'number' ||
+        typeof(c) !== 'number' ||
+        typeof(d) !== 'number') {
+        return 0;
+    } else {
+        return Math.max(a, b ,c, d);
+    }
+} */
 console.log(findMaxNumber(1,2,'10',4));
