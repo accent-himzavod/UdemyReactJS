@@ -65,46 +65,6 @@ console.log(getCoupeNumber(23));
 
 console.log( 8 % 10);
 
-// Место для первой задачи
-function getTimeFromMinutes(timeLine) {
-    let hour, minutes, hourText, minText;
-
-    if (typeof(timeLine) != 'number' || !Number.isInteger(timeLine) || timeLine < 0) {
-       return "Ошибка, проверьте данные";
-    }
-
-    if (timeLine < 60){
-        hour = 0;
-    } else {
-        hour = (timeLine / 60);
-        hour = hour.toFixed();
-    }
-    minutes = timeLine - (hour * 60);
-
-    if (minutes < 0) {minutes = 0}
-    
-
-    if (hour % 10 === 1) {
-         hourText = `${hour} час`;
-    } else if (hour % 10 > 1 && hour % 10 < 5 ) {
-         hourText = `${hour} часа`;
-    } else {
-         hourText = `${hour} часов`;
-    }
-    
-    if (minutes % 10 === 1) {
-         minText = `${minutes} минута`;
-    } else if (minutes % 10 > 1 && minutes % 10 < 5 ) {
-         minText = `${minutes} минуты`;
-    } else {
-         minText = `${minutes} минут`;
-    }
-    return `Это ${hourText} и ${minText}`
-}
-
-console.log(getTimeFromMinutes(150));
-console.log(2.5.toFixed());
-
 function returnNeighboringNumbers(value) {
     return [value-1, value, value+1];
 }
@@ -137,3 +97,44 @@ function getMathResult(x, y) {
 }
 
 console.log(getMathResult(3,10));
+
+
+// Место для первой задачи
+function getTimeFromMinutes(timeLine) {
+    let hour, minutes, hourText, minText;
+
+    if (typeof(timeLine) != 'number' || !Number.isInteger(timeLine) || timeLine < 0) {
+       return "Ошибка, проверьте данные";
+    }
+
+    if (timeLine < 60){
+        hour = 0;
+    } else {
+        hour = (timeLine / 60);
+        hour = hour - (hour % 1);
+    }
+    minutes = timeLine - (hour * 60);
+
+    if (minutes < 0) {minutes = 0}
+    
+
+    if (hour % 10 === 1) {
+         hourText = `${hour} час`;
+    } else if (hour % 10 > 1 && hour % 10 < 5 ) {
+         hourText = `${hour} часа`;
+    } else {
+         hourText = `${hour} часов`;
+    }
+    
+    if (minutes % 10 === 1) {
+         minText = `${minutes} минута`;
+    } else if (minutes % 10 > 1 && minutes % 10 < 5 ) {
+         minText = `${minutes} минуты`;
+    } else {
+         minText = `${minutes} минут`;
+    }
+    return `Это ${hourText} и ${minText}`
+}
+
+console.log(getTimeFromMinutes(151));
+console.log(21 % 10);
