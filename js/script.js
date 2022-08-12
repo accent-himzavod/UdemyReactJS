@@ -1,12 +1,21 @@
 "use strict";
 
-/* //Задача №1
+//Задача №1
 let numberOfFilms;
-numberOfFilms = prompt("Скільки фільмів ви продивилися?","");
+//numberOfFilms = prompt("Скільки фільмів ви продивилися?","");
 //console.log(numberOfFilms);
 
-//Задача №2
+function start() {
+    numberOfFilms = +prompt("Скільки фільмів ви продивилися?","");
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms) ){
+        numberOfFilms = prompt("Скільки фільмів ви продивилися?","");
+    }
+    return numberOfFilms;
+}
 
+start();
+
+//Задача №2
 let personalMovieDB = {
     count: numberOfFilms,
     movies: {},
@@ -15,18 +24,44 @@ let personalMovieDB = {
     privat: false
 };
 
+function rememberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        const   movieName = prompt("Назва фільму:", ''),
+                movieRate = prompt("Оцінка фільму:", '');
+
+        if (movieName !== '' && movieRate !== '' && movieName !== null && movieRate !== null && movieName.length < 50) {
+            personalMovieDB.movies[movieName] = movieRate;
+            console.log('done');
+        } else {
+            console.log('err');
+            i--;
+        }
+    }
+}
+rememberMyFilms();
+
 //Задача №3
-let movieName = prompt("Назва фільму:");
-let movieRate = prompt("Оцінка фільму:");
+function detectPersonalLevel() {
+    if (personalMovieDB.count < 10){
+        console.log('Мало');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30 ){
+        console.log('Класичний глядач');
+    } else if (personalMovieDB.count >= 30) {
+        console.log('Кіноман');
+    } else {
+        console.log('Помилка');
+    }
+}
 
-personalMovieDB.movies[movieName] = movieRate;
+ detectPersonalLevel();
 
-movieName = prompt("Назва фільму:");
-movieRate = prompt("Оцінка фільму:");
 
-personalMovieDB.movies[movieName] = movieRate;
 
-console.log(personalMovieDB); */
+
+
+
+
+
 //================================
 /* function thirdTask() {
     // Значения массива менять нельзя, тут он проверяется автоматически именно на эти значения
@@ -56,41 +91,4 @@ console.log(personalMovieDB); */
     // Не трогаем
     return result;
 }
-console.log(thirdTask()) */
-
-
-//=================
-
-const lines = 5;
-let result = '';
-// Проверяется именно переменная result, формируйте строку в ней
-for (let i = 0; i < lines; i++){
-     
-    for (let j = i; j < lines; j++) {
-        result = result + ' '; 
-    } 
-
-    for (let f = 0; f < i * 2 + 1; f++) {
-        result = result + '*'; 
-    }    
-
-    result = result + '\n'; 
-}
-
-console.log(result)
-
-// Ріщення задачі
-/* const lines = 5;
-let result = '';
-
-for (let i = 0; i <= lines; i++) {
-    for (let j = 0; j < lines - i; j++) {
-        result += " ";
-    }
-    for (let j = 0; j < 2 * i + 1; j++) {
-        result += "*";
-    }
-    result += "\n";
-}
-
-console.log(result) */
+console.log(thirdTask())*/
