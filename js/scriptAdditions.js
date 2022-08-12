@@ -138,3 +138,37 @@ function getTimeFromMinutes(timeLine) {
 
 console.log(getTimeFromMinutes(151));
 console.log(21 % 10);
+
+// Место для второй задачи
+function findMaxNumber(a,b,c,d) {
+    /* if (isNaN(a) || isNaN(b) || isNaN(c) || isNaN(d)){
+        return 0;
+    } */
+    if (typeof(a) !== 'number' || typeof(b) !== 'number'  || typeof(c) !== 'number'  || typeof(d) !== 'number' ){
+        return 0;
+    }
+
+    if (a - b > 0) {
+        if (a - c > 0) { 
+            if (a - d > 0){
+                return a;
+            }
+        } else if (c - d > 0) {
+            return c;
+        } else {return d;}
+    } else {
+        if (b - c > 0 ){
+            if (b - d > 0){
+                return b;
+            }
+        } else {
+            if (c - d > 0){
+                return c;
+            } else {
+                return d;
+            }
+        }
+    }
+}
+
+console.log(findMaxNumber(1,2,'10',4));
