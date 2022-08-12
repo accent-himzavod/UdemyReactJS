@@ -52,9 +52,26 @@ function detectPersonalLevel() {
         console.log('Помилка');
     }
 }
-
  detectPersonalLevel();
 
+ function showMyDB(hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
+ }
+
+ showMyDB(personalMovieDB.privat);
+
+ function writeMyGenres(){
+
+    for (let i = 0; i < 3; i++) {
+        //const genres = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
+        personalMovieDB.genres[i] = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
+    }
+    console.log(personalMovieDB.genres);
+ }
+
+ writeMyGenres();
 
 
 
