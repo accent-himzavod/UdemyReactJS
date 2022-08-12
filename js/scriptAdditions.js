@@ -183,3 +183,22 @@ function findMaxNumber(a,b,c,d) {
     }
 } */
 console.log(findMaxNumber(4,2,10,3));
+
+
+function fib(count) {
+    let result = [0,1],
+        resStr = '0';
+    if (count === 0 || !count.isInteger) {return resStr = '';}
+
+    for (let i = 2; i < count; i++){
+        result[i] = result[i-1] + result[i-2]
+        //resStr += ` ${result[i]}` 
+    }  
+
+    for (let i = 1; i < count; i++){
+        resStr += ` ${result[i]}` 
+    }  
+    return resStr;      
+}
+
+console.log(fib(3));
