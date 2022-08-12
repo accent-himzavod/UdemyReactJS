@@ -136,8 +136,8 @@ function getTimeFromMinutes(timeLine) {
     return `Это ${hourText} и ${minText}`
 }
 
-console.log(getTimeFromMinutes(1510));
-console.log(21 % 10);
+console.log(getTimeFromMinutes(60));
+//console.log(21 % 10);
 
 // Место для второй задачи
 function findMaxNumber(a,b,c,d) {
@@ -182,4 +182,4 @@ function findMaxNumber(a,b,c,d) {
         return Math.max(a, b ,c, d);
     }
 } */
-console.log(findMaxNumber(1,2,'10',4));
+console.log(findMaxNumber(4,2,10,3));
