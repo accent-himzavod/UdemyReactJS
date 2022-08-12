@@ -8,3 +8,6 @@ git checkout main
 git merge L32_obj 
 git push origin main 
 git branch -d L32_obj //delete branch L32_obj
+
+//Алгоритми
+http://mathhelpplanet.com/static.php?p=javascript-algoritmy-poiska
