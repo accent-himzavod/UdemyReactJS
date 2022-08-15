@@ -22,7 +22,7 @@ function standardizeStrings(arr) {
 }
 standardizeStrings(favoriteCities);
 
-//teacher
+//==teacher===
 // function showFamily(arr) {
 //     let str = '';
 //     arr.length === 0 ? str = 'Семья пуста' : str = 'Семья состоит из: ';
