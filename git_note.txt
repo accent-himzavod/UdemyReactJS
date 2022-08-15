@@ -9,5 +9,5 @@ git merge L32_obj
 git push origin main 
 git branch -d L32_obj //delete branch L32_obj
 
-//Алгоритми
+//Алгоритми (пошуку)
 http://mathhelpplanet.com/static.php?p=javascript-algoritmy-poiska
