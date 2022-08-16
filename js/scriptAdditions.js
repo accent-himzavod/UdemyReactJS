@@ -202,3 +202,4 @@ function fib(count) {
 }
 
 console.log(fib(12));
+а
