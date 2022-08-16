@@ -22,26 +22,21 @@ const shoppingMallData = {
     budget: 50000
 }
 
-function getSqrt(shops) {
-    let totalSqrt = 0;
-    shops.forEach(shop => {
-        totalSqrt += shop.width * shop.length;
+function isBudgetEnough(data) {
+    let square = 0;
+    let volume = 0;
+
+    data.shops.forEach(shop => {
+        square += shop.width * shop.length;
     });
-    return totalSqrt;
-}
 
-function getVolume(square, height) {
-    return square * height;
-}
+    volume = data.height * square;
 
-function getBill(value, price) {
-    return value * price;
-}
-
-
-function isBudgetEnough(data) {      
-    return getBill(getVolume(getSqrt(data.shops),data.height),data.moneyPer1m3) <= data.budget 
-    ? `Бюджета достаточно` : `Бюджета недостаточно`;
+    if (data.budget - (volume * data.moneyPer1m3) >= 0) {
+        return 'Бюджета достаточно';
+    } else {
+        return 'Бюджета недостаточно';
+    }
 }
 
 console.log(isBudgetEnough(shoppingMallData));
