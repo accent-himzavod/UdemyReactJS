@@ -30,7 +30,7 @@ function getSqrt(shops) {
     return totalSqrt;
 }
 
-function getValue(square, height) {
+function getVolume(square, height) {
     return square * height;
 }
 
@@ -40,7 +40,7 @@ function getBill(value, price) {
 
 
 function isBudgetEnough(data) {      
-    return getBill(getValue(getSqrt(data.shops),data.height),data.moneyPer1m3) === data.getBill 
+    return getBill(getVolume(getSqrt(data.shops),data.height),data.moneyPer1m3) <= data.budget 
     ? `Бюджета достаточно` : `Бюджета недостаточно`;
 }
 
