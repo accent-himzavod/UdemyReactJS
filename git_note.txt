@@ -1,4 +1,5 @@
 git log
+git log --oneline --allq
 git status
 git checkout main 
 git checkout -b L32_obj
