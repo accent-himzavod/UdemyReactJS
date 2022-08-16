@@ -47,6 +47,13 @@ let personalMovieDB = {
         }
     },
     writeMyGenres(){
+        //=teacher
+        // for (let i = 0; i < 3; i++) {
+        //     personalMovieDB.genres[i] = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
+        //     if (personalMovieDB.genres[i] == '' || personalMovieDB.genres[i] == null) {
+        //         i--;
+        //     }
+        // }        
         for (let i = 0; i < 3; i++) {
             //const genres = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
             personalMovieDB.genres[i] = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
@@ -54,7 +61,6 @@ let personalMovieDB = {
                 personalMovieDB.genres[i] = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
             }
         }
-        //console.log(personalMovieDB.genres);
         personalMovieDB.genres.forEach((genre, i) => {
             console.log(`Улюблений жанр № ${i+1} - це ${genre}`);
         });
