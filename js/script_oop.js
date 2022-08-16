@@ -54,6 +54,7 @@ let personalMovieDB = {
         //         i--;
         //     }
         // }        
+        //=my
         for (let i = 0; i < 3; i++) {
             //const genres = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
             personalMovieDB.genres[i] = prompt(`Ваш улюблений жанр під номером ${i + 1}`);
