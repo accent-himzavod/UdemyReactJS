@@ -1,0 +1,48 @@
+Lessons 39: equals
+==================================================
+https://dorey.github.io/JavaScript-Equality-Table/
+//To String:
+typeof(String(4));
+typeof(4+'');
+//To Number:
+typeof(Number('4'));
+typeof(+'4');
+parseInt("15px",10)
+//To Boolean
+//(0, '', null, undefined, NaN) = false
+typeof(Boolean('4'));
+typeof(!!"4444"));
+==================================================
+Lessons 40: Clousures
+==================================================
+function createCounter() {
+	let counter = 0;
+	
+	const myFunction = function() {
+		counter = counter + 1;
+		return counter;
+	}
+	
+	return myFunction;
+}
+
+const increment = createCounter();
+const c1 = increment();
+const c2 = increment();
+const c3 = increment();
+
+console.log(c1, c2, c3);	//1 2 3
+
+==================================================
+Lessons 42: DOM
+==================================================
+//https://learn.javascript.ru/css-selectors
+
+Document.getElementById('box');
+Document.getElementsByTagName('button')[0];
+Document.getElementsByClassName('circle');
+Document.querySelectorAll('.heart');	// by class
+Document.querySelector('#heart'); // by Id
+==================================================
+Lessons 43: DOM
+==================================================
