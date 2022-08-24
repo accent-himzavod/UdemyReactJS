@@ -1,3 +1,5 @@
+git init
+git remote add <name> <url>
 git log
 git log --oneline --allq
 git status
