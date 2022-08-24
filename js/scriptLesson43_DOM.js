@@ -3,8 +3,10 @@
 const   box = document.getElementById('box'),
         btns = document.getElementsByTagName('button')[0],
         crcls = document.getElementsByClassName('circle'),
-        hearts = document.querySelectorAll('.heart'),	// by class
-        oneHeart = document.querySelector('#heart'); // by Id  
+        wrapper = document.querySelector('.wrapper'),
+        hearts = wrapper.querySelectorAll('.heart'),	// by class
+        oneHeart = wrapper.querySelector('#heart'); // by Id  
+
 
         box.style.backgroundColor = 'blue';
         box.style.width = '500px';
@@ -41,3 +43,10 @@ const   box = document.getElementById('box'),
         wrapper.removeChild(hearts[1]);
         wrapper.replaceChild(crcls[0], hearts[0]);
 
+        div.innerHTML = '<h1>Hello world</h1>';
+        div.textContent = "Hello world";
+
+        div.insertAdjacentHTML("afterbegin",'<h2>Hello!</h2>');
+        div.insertAdjacentHTML("afterend",'<h2>Hello!</h2>');
+        div.insertAdjacentHTML("beforebegin",'<h2>Hello!</h2>');
+        div.insertAdjacentHTML("beforeend",'<h2>Hello!</h2>');
