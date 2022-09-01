@@ -25,11 +25,20 @@ const movieDB = {
 };
 
 //#1 - delete all promo ads
-const promo = document.querySelector(".promo__adv");
-const advs = promo.querySelectorAll("img");
+const promo = document.querySelector(".promo__adv"),
+      advs = promo.querySelectorAll("img"),
+      //advs = document.querySelectorAll(".promo__adv img"),
+      genre = document.querySelector(".promo__genre"),
+      promoBg = document.querySelector(".promo__bg");
+      
 
 advs.forEach(item => {
     item.remove();
 })
 
-//
+//#2 - change genre
+genre.textContent = "Драма";
+//#3 - change bg
+promoBg.style.background = "url(./img/bg.jpg) top center/cover no-repeat";
+
+//    background: url(../img/mars.webp) center center/cover no-repeat;
