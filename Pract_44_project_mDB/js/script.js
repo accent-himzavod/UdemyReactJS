@@ -54,6 +54,13 @@ movieDB.movies.forEach((film, i) => {
         </li>
     `;
 });
+//Testing Events on Menu
+let menuItems = document.querySelectorAll('.promo__menu-item');
+menuItems.forEach(item => {
+    item.addEventListener('click', (e)=>{
+        console.log(e.target);
+    }, {once: true});
+});
 
 
 
