@@ -29,7 +29,9 @@ const promo = document.querySelector(".promo__adv"),
       advs = promo.querySelectorAll("img"),
       //advs = document.querySelectorAll(".promo__adv img"),
       genre = document.querySelector(".promo__genre"),
-      promoBg = document.querySelector(".promo__bg");
+      promoBg = document.querySelector(".promo__bg"),
+      filmsBox = document.querySelector(".promo__interactive-list");
+      //films = filmsBox.querySelectorAll(".promo__interactive-item");
       
 
 advs.forEach(item => {
@@ -40,5 +42,20 @@ advs.forEach(item => {
 genre.textContent = "Драма";
 //#3 - change bg
 promoBg.style.background = "url(./img/bg.jpg) top center/cover no-repeat";
+//#4,5
 
-//    background: url(../img/mars.webp) center center/cover no-repeat;
+filmsBox.innerHTML = "";
+
+movieDB.movies.sort();
+movieDB.movies.forEach((film, i) => {
+    filmsBox.innerHTML += `
+        <li class="promo__interactive-item">${i+1}: ${film}
+            <div class="delete"></div>
+        </li>
+    `;
+});
+
+
+
+
+
