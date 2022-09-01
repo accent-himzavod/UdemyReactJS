@@ -1,18 +1,17 @@
 'use strict';
 
 const   box = document.getElementById('box'),
-        btns = document.getElementsByTagName('button')[0],
+        btns = document.getElementsByTagName('button'),
+        //btns = document.getElementsByTagName('button')[0],
         crcls = document.getElementsByClassName('circle'),
         wrapper = document.querySelector('.wrapper'),
         hearts = wrapper.querySelectorAll('.heart'),	// by class
         oneHeart = wrapper.querySelector('#heart'); // by Id  
 
-
+        //Style
         box.style.backgroundColor = 'blue';
         box.style.width = '500px';
-
         box.style.cssText = `background-color: blue; width: 500px`;
-
         btns[0].style.borderRadius = '100%'; 
         crcls[1].style.backgroundColor = 'red';
 
@@ -23,12 +22,12 @@ const   box = document.getElementById('box'),
         hearts.forEach(item => {
             item.style.backgroundColor = 'red';
         });
-
+        //Create elements
         const div = document.createElement('div');
         const text = document.createTextNode('I am a robot');
-
+        
         div.classList.add('black');
-
+        //Inserting elements
         wrapper.append(div);
         wrapper.appendChild(div);
         wrapper.prepend(div);
@@ -50,3 +49,23 @@ const   box = document.getElementById('box'),
         div.insertAdjacentHTML("afterend",'<h2>Hello!</h2>');
         div.insertAdjacentHTML("beforebegin",'<h2>Hello!</h2>');
         div.insertAdjacentHTML("beforeend",'<h2>Hello!</h2>');
+        //Events
+        const deleteElement = (event) => {
+            e.target.remove();
+        };
+        btns.forEach(btn => {
+            btn.addEventListener('click',(event) => {
+                console.log(event.target);
+                console.log(event.currentTarget);
+                console.log(event.type);
+                //event.target.remove();
+            })
+        }); 
+        btns[0].addEventListener('click', deleteElement, {once: true});
+        btns[1].removeEventListener('click', deleteElement);
+
+        //Prevent Default Events
+        let link = document.querySelector('a');
+        link.addEventListener('click', function(event){
+            event.preventDefault();
+        });
