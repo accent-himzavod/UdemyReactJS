@@ -59,6 +59,7 @@ const sortArr = (arr) => {
 
 function getFilmsFromDB(films, parent) {
     parent.innerHTML = "";
+    sortArr(films);
     films.forEach((film, i) => {
         parent.innerHTML += `
             <li class="promo__interactive-item">${i+1}: ${film}
@@ -70,8 +71,10 @@ function getFilmsFromDB(films, parent) {
         btn.addEventListener('click', ()=>{
             btn.parentElement.remove();
             movieDB.movies.splice(i,1);
+            getFilmsFromDB(films, parent);
         });
     });
+    
 }
 //========================================================================
 const   formAdd = document.querySelector(".add"),
@@ -97,7 +100,7 @@ const addNewFilm = (filmName,movies) => {
     if (filmName) {
         filmName.length < 21 ? movies.push(filmName) : movies.push(`${filmName.slice(0,21)}...`)
         // filmName = "";
-        sortArr(movieDB.movies);        
+        //sortArr(movieDB.movies);        
     }
 }
 
@@ -137,7 +140,7 @@ btnDel.forEach(btn =>{
 });
 
 deleteAdv(advs);
-sortArr(movieDB.movies);
+//sortArr(movieDB.movies);  
 getFilmsFromDB(movieDB.movies, filmsBox)
 formAdd.addEventListener('submit',submitForm);
 
