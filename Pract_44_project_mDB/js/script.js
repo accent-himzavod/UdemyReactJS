@@ -14,6 +14,9 @@
 
 'use strict';
 
+window.addEventListener('DOMContentLoaded',{
+
+});
 const movieDB = {
     movies: [
         "Логан",
