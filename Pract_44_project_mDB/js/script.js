@@ -14,7 +14,7 @@
 
 'use strict';
 
-window.addEventListener('DOMContentLoaded',{
+window.addEventListener('DOMContentLoaded',() => {
 
 });
 const movieDB = {
