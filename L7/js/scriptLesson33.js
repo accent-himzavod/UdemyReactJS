@@ -4,8 +4,8 @@
 const arr = [2, 3, 6, 8, 10];
 // arr[99] = 0;
 // console.log(arr.length);
-// arr.pop();
-// arr.push();
+// arr.pop();       //delete
+// arr.push();      //append
 
 for (let i = 0; i < arr.length; i++) {
     console.log(arr[i]);

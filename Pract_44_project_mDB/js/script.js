@@ -44,16 +44,22 @@ genre.textContent = "Драма";
 promoBg.style.background = "url(./img/bg.jpg) top center/cover no-repeat";
 //#4,5
 
-filmsBox.innerHTML = "";
-
-movieDB.movies.sort();
-movieDB.movies.forEach((film, i) => {
-    filmsBox.innerHTML += `
-        <li class="promo__interactive-item">${i+1}: ${film}
-            <div class="delete"></div>
-        </li>
-    `;
+function GetFilmsFromDB() {
+    filmsBox.innerHTML = "";
+    movieDB.movies.sort();
+    movieDB.movies.forEach((film, i) => {
+        filmsBox.innerHTML += `
+            <li class="promo__interactive-item">${i+1}: ${film}
+                <div class="delete"></div>
+            </li>
+        `;
+    });
+    const btnDel = filmsBox.querySelectorAll('.delete');
+    btnDel.forEach(btn =>{
+    btn.addEventListener('click', delFilm);
 });
+}
+
 //Testing Events on Menu
 let menuItems = document.querySelectorAll('.promo__menu-item');
 menuItems.forEach(item => {
@@ -61,6 +67,61 @@ menuItems.forEach(item => {
         console.log(e.target);
     }, {once: true});
 });
+
+const formAdd = document.querySelector(".add"),
+        btnAdd = formAdd.querySelector("button"),        
+        // isFav = formAdd.querySelector("input=[type=checkbox]"),        
+        addingInput = formAdd.querySelector(".adding__input");
+// let isFav = () =>{
+//      formAdd.querySelectorAll("input").forEach(elem => {
+//     if (elem.type.toLowerCase() == 'checkbox') {return elem.checked; }
+// })}
+const isFav = () => {
+    let val;
+    formAdd.querySelectorAll("input").forEach(elem => {
+        if (elem.type.toLowerCase() == 'checkbox') {
+        //console.log(elem.checked);
+        val = !!elem.checked;
+        //val = elem.checked == true ? true : false;
+    }
+    return val;
+})}
+console.log(isFav());
+
+
+const addFilm = (e) => {
+    e.preventDefault();
+    addingInput.value.length < 21 ? movieDB.movies.push(addingInput.value) : movieDB.movies.push(`${addingInput.value.slice(0,21)}...`)
+    GetFilmsFromDB();
+    //  console.log(isFav());
+    // if (isFav()) {console.log("Добавляем любимый фильм");}
+    //console.log(movieDB.movies);
+}
+btnAdd.addEventListener('click', addFilm);
+
+const delFilm = (e) =>{
+    e.preventDefault();
+    // console.log(e.currentTarget.parentNode.textContent);
+    
+    // const index =  movieDB.movies.indexOf(e.currentTarget.parentElement.textContent);
+
+    movieDB.movies.forEach((movie, i, array) => {
+        console.log(movie.toLowerCase().includes(e.currentTarget.parentElement.textContent.toLowerCase()));
+        
+        if (movie.toLowerCase().includes(e.currentTarget.parentElement.textContent.slice(0,21).toLowerCase())) {
+            array.splice(i,1);
+            
+        }
+    });
+
+    // console.log(index);
+    // if (index > -1) { // only splice array when item is found
+    //     movieDB.movies.splice(index, 1); // 2nd parameter means remove one item only
+    // }
+    GetFilmsFromDB(); 
+}
+
+
 
 
 

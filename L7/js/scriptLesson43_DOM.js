@@ -85,5 +85,11 @@ document.querySelector('[data-current="3"]').nextSibling;       //Node
 document.querySelector('[data-current="3"]').nextElementSibling //Element
 document.querySelector('[data-current="3"]').previousSibling;
 document.querySelector('[data-current="3"]').previousElementSibling
-
+//document body childElements
+for (node of document.body.childNodes) {
+    if (node.nodeName == '#text') {
+        continue;
+    }
+    console.log(node);
+}
 
