@@ -99,6 +99,7 @@ const addNewFilm = (filmName,movies) => {
     //if (filmName.length > 0) {
     if (filmName) {
         filmName.length < 21 ? movies.push(filmName) : movies.push(`${filmName.slice(0,21)}...`)
+        if (isFav.checked) {console.log("Добавляем любимый фильм");}
         // filmName = "";
         //sortArr(movieDB.movies);        
     }
@@ -107,8 +108,7 @@ const addNewFilm = (filmName,movies) => {
 const submitForm = (e) => {
     e.preventDefault();
     addNewFilm(addingInput.value,movieDB.movies);    
-    getFilmsFromDB(movieDB.movies, filmsBox);            
-    if (isFav.checked) {console.log("Добавляем любимый фильм");}
+    getFilmsFromDB(movieDB.movies, filmsBox);   
     //addingInput.value = "";
     // formAdd.reset();
     e.target.reset();
