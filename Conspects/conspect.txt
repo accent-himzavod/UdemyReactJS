@@ -40,6 +40,7 @@ Lessons 42: DOM
 
 Document.getElementById('box');
 Document.getElementsByTagName('button')[0];
+Document.querySelector("[type='checkbox']");
 Document.getElementsByClassName('circle');
 Document.querySelectorAll('.heart');	// by class
 Document.querySelector('#heart'); // by Id

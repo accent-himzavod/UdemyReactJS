@@ -3,6 +3,7 @@
 const   box = document.getElementById('box'),
         btns = document.getElementsByTagName('button'),
         //btns = document.getElementsByTagName('button')[0],
+        //isFav = formAdd.querySelector("[type='checkbox']"),
         crcls = document.getElementsByClassName('circle'),
         wrapper = document.querySelector('.wrapper'),
         hearts = wrapper.querySelectorAll('.heart'),	// by class
