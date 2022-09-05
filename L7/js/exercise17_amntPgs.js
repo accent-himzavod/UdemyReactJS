@@ -17,12 +17,22 @@ function isPangram(string) {
     arr = [...sset];    
 
     return abcStr == arr.join("");
-    // return newStr;
-}
 
+}
 console.log(isPangram('The quick brown fox jumps over the lazy dog'));
-//Ex.19
 
+//Ex.19=================================================
 function deepCount(a){
-
+    let count = a.length;
+    a.forEach(item => {
+        if (Array.isArray(item)) {count += deepCount(item)}
+    });
+    return count;
 }
+// Вариант с методом reduce
+// function deepCount(a){
+//     return a.reduce((s,e)=>s+(Array.isArray(e) ? deepCount(e) : 0),a.length);
+// }
+
+
+console.log(deepCount([[[[[[[[[]]]]]]]]]));
