@@ -35,6 +35,23 @@ window.addEventListener('DOMContentLoaded',() => {
 
     const   deadLine = '2022-09-10';
     
+    // By couch
+    // function getRemainingTime(endTime){        
+    //     let t = Date.parse(endTime) - Date.parse(new Date()),
+    //         days = Math.floor(t / (1000 * 60 * 60 * 24)),
+    //         hours = Math.floor(t / (1000 * 60 * 60) % 60),
+    //         minutes = Math.floor((t / (1000 * 60)) % 60),
+    //         seconds = Math.floor((t / 1000) % 60);
+
+    //     return {
+    //         total: t,
+    //         days: days,
+    //         hours: hours,
+    //         minutes: minutes,
+    //         seconds: seconds
+    //     };        
+    // }
+
     function getRemainingTime(endTime){        
         let t = {
             total: total,
