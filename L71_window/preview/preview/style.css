@@ -1,11 +1,12 @@
 .box {
-box-sizing: border-box;
+  box-sizing: border-box;
   width: 400px;
   height: 350px;
   overflow: scroll;
   margin: 0 auto;
   margin-top: 50px;
   padding: 10px;
+  border-radius: 5%;
 }
 button {
   width: 100px;
