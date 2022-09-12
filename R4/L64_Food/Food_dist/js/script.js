@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded',() => {
     showTabContent(0);
 
     //DEADLINE
-    const   deadLine = '2022-09-10';
+    const   deadLine = '2022-09-17';
     
     // By couch
     // function getRemainingTime(endTime){        
@@ -95,7 +95,7 @@ window.addEventListener('DOMContentLoaded',() => {
         updateClock();
         function updateClock() {
             const remTime =  getRemainingTime(endTime);
-            if (remTime.total <= 0) {intervalID.clearInterval;}// clearInterval();               
+            if (remTime.total <= 0) {clearInterval(intervalID);}// clearInterval();               
           
             days.innerHTML = getZero(remTime.days);
             hours.innerHTML = getZero(remTime.hours);
@@ -110,14 +110,17 @@ window.addEventListener('DOMContentLoaded',() => {
     const btnModal = document.querySelectorAll('[data-modal]'),
             modal = document.querySelector('.modal'),
             modalClose = document.querySelector('[data-modal_close]');
-    //Show modal
+    //Open modal
+    function openModal() {
+         //modal.style.display = "block";
+         modal.classList.add('show');
+         modal.classList.remove('hide');
+         document.body.style.overflow = 'hidden';
+         //clearInterval(modalTimerID);
+    }
+
     btnModal.forEach(btn => {
-        btn.addEventListener('click',() => {
-            //modal.style.display = "block";
-            modal.classList.add('show');
-            modal.classList.remove('hide');
-            document.body.style.overflow = 'hidden';
-        });
+        btn.addEventListener('click', openModal);
     });
 
     //Close modal
@@ -125,6 +128,7 @@ window.addEventListener('DOMContentLoaded',() => {
         modal.classList.add('hide');
         modal.classList.remove('show');
         document.body.style.overflow = '';
+        clearInterval(modalTimerID); //better way close Timer here
     }
     //btn
     modalClose.addEventListener('click', closeModal)
@@ -140,4 +144,17 @@ window.addEventListener('DOMContentLoaded',() => {
             closeModal();
         }
     });
+
+    const modalTimerID = setInterval(openModal, 3000);
+
+    function openModalByScrol() {
+        //console.log(window.pageYOffset); //deprecated
+        //console.log(window.scrollY + document.documentElement.clientHeight, "=",document.documentElement.scrollHeight);
+        if (window.scrollY + document.documentElement.clientHeight == document.documentElement.scrollHeight) {
+            openModal();
+            window.removeEventListener('scroll', openModalByScrol);
+        }
+    }
+
+    window.addEventListener('scroll', openModalByScrol);
 });
