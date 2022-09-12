@@ -33,6 +33,7 @@ window.addEventListener('DOMContentLoaded',() => {
     hideTabContent();
     showTabContent(0);
 
+    //DEADLINE
     const   deadLine = '2022-09-10';
     
     // By couch
@@ -103,4 +104,40 @@ window.addEventListener('DOMContentLoaded',() => {
          }  
     }   
     setClock('.timer',deadLine);
+
+    //MODAL
+
+    const btnModal = document.querySelectorAll('[data-modal]'),
+            modal = document.querySelector('.modal'),
+            modalClose = document.querySelector('[data-modal_close]');
+    //Show modal
+    btnModal.forEach(btn => {
+        btn.addEventListener('click',() => {
+            //modal.style.display = "block";
+            modal.classList.add('show');
+            modal.classList.remove('hide');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    //Close modal
+    function closeModal() {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+    //btn
+    modalClose.addEventListener('click', closeModal)
+    //bg
+    modal.addEventListener('click',(e) => {        
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+    //keydown
+    document.addEventListener('keydown', (e) => {
+        if (e.code == 'Escape' && modal.classList.contains('show')) {
+            closeModal();
+        }
+    });
 });
