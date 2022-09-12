@@ -61,11 +61,17 @@ window.addEventListener('DOMContentLoaded',() => {
             seconds: seconds
         }
         t.total = Date.parse(endTime) - Date.parse(new Date());
-        t.days = Math.floor(t.total / (1000 * 60 * 60 * 24));
-        t.hours = Math.floor(t.total / (1000 * 60 * 60) % 60);
-        t.minutes = Math.floor((t.total / (1000 * 60)) % 60);
-        t.seconds = Math.floor((t.total / 1000) % 60);
-
+        if (t.total <= 0) {
+            t.days = 0;
+            t.hours = 0;
+            t.minutes = 0;
+            t.seconds = 0;
+        } else {
+            t.days = Math.floor(t.total / (1000 * 60 * 60 * 24));
+            t.hours = Math.floor(t.total / (1000 * 60 * 60) % 60);
+            t.minutes = Math.floor((t.total / (1000 * 60)) % 60);
+            t.seconds = Math.floor((t.total / 1000) % 60);
+        }
         return t;        
     }
 
@@ -82,24 +88,19 @@ window.addEventListener('DOMContentLoaded',() => {
                 days = timer.querySelector('#days'),
                 hours = timer.querySelector('#hours'),
                 minutes = timer.querySelector('#minutes'),
-                seconds = timer.querySelector('#seconds'),
-                intervalID = setInterval(updateClock, 1000);
+                seconds = timer.querySelector('#seconds');
+                
+        const intervalID = setInterval(updateClock, 1000);
         updateClock();
         function updateClock() {
             const remTime =  getRemainingTime(endTime);
-            if (remTime.total <= 0) {
-                intervalID.clearInterval();
-            } else {
-                days.innerHTML = getZero(remTime.days);
-                hours.innerHTML = getZero(remTime.hours);
-                minutes.innerHTML = getZero(remTime.minutes);
-                seconds.innerHTML = getZero(remTime.seconds);
-            }
-        }        
-    }
-
-    
+            if (remTime.total <= 0) {intervalID.clearInterval;}// clearInterval();               
+          
+            days.innerHTML = getZero(remTime.days);
+            hours.innerHTML = getZero(remTime.hours);
+            minutes.innerHTML = getZero(remTime.minutes);
+            seconds.innerHTML = getZero(remTime.seconds);                
+         }  
+    }   
     setClock('.timer',deadLine);
-
-
 });
