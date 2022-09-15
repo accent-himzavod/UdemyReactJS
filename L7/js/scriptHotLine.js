@@ -7,6 +7,8 @@
 // console.log(names.forEach((prodName, i)=>{resultTxt += `${prodName.textContent.split(' ').join(' ').split('\n').join('').trim()};${desc[i].textContent.split(' ').join(' ').split('\n').join('').trim()};${prices[i].textContent};${pricesDesc[i].textContent}\n`;}));
 // const arr = [document.querySelectorAll(".list-item__title"),document.querySelectorAll(".list-item__specifications-text"),document.querySelectorAll(".price__value"),document.querySelectorAll(".text-sm")];
 
+//Hotline
 const getGoods = (arr)=>{let rt = ''; arr[0].forEach((prodName, i)=>{rt += `${arr[0][i].textContent.split(' ').join(' ').split('\n').join('').trim()};${arr[1][i].textContent.split().join('').trim().split('\n').join('').trim()};${arr[2][i].textContent.split(' ').join(' ').split('\n').join('').trim()}\n`;}); return rt;};console.log(getGoods([document.querySelectorAll(".list-item__title"),document.querySelectorAll(".list-item__specifications-text"),document.querySelectorAll(".price__value"),document.querySelectorAll(".text-sm")]))
 
-
+//rozetka
+const getGoods = (arr)=>{let rt = ''; arr[0].forEach((prodName, i)=>{rt += `${i};${arr[0][i].textContent.split(' ').join(' ').split('\n').join('').trim()};${typeof(arr[1][i]) === 'object' ? arr[1][i].innerText : ""};${arr[2][i].textContent.split(' ').join(' ').split('\n').join('').trim()}\n`;}); return rt;};console.log(getGoods([document.querySelectorAll(".goods-tile__title"),document.querySelectorAll(".goods-tile__description"),document.querySelectorAll(".goods-tile__price-value")]))
