@@ -45,5 +45,9 @@ Document.getElementsByClassName('circle');
 Document.querySelectorAll('.heart');	// by class
 Document.querySelector('#heart'); // by Id
 ==================================================
-Lessons 43: DOM
+Lessons 76: This
 ==================================================
+1) Звичайна функція: this = Window, якщо викор. 'use strict' тоді this = undefined
+2) Контекст виклику методу обєкта - це сам обєкт
+3) this в конструкторах та класах - це новий екземпляр обєкта
+4) Ручна привязка контекста (this): call(this, args1,args2); apply(this,[args1,args2]); bind(this)

@@ -1,7 +1,7 @@
 git init
 git remote add <name> <url>
 git log
-git log --oneline --allq
+`git log --oneline --all
 git status
 git checkout main 
 git checkout -b L32_obj
