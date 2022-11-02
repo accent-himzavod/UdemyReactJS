@@ -44,6 +44,7 @@ Document.querySelector("[type='checkbox']");
 Document.getElementsByClassName('circle');
 Document.querySelectorAll('.heart');	// by class
 Document.querySelector('#heart'); // by Id
+Document.createElement('div'); // by selector
 ==================================================
 Lessons 76: This
 ==================================================
@@ -51,3 +52,27 @@ Lessons 76: This
 2) Контекст виклику методу обєкта - це сам обєкт
 3) this в конструкторах та класах - це новий екземпляр обєкта
 4) Ручна привязка контекста (this): call(this, args1,args2); apply(this,[args1,args2]); bind(this)
+==================================================
+Lessons 79: Class
+==================================================
+class MenuItem{        
+        constructor(a, b, parentSelector)
+		    this.a = a;
+            this.b = b;
+            this.convertToUAH();
+            this.parent = document.querySelector(parentSelector);
+        }
+        convertToUAH(){
+            this.price = this.price * this.currency;
+        }
+        render(){
+			const element = document.createElement('div');
+            element.innerHTML =`<div class="menu__item">  <div>`;
+			this.parent.append(element);
+		}
+}
+new MenuItem(a, b, '.container').render();
+==================================================
+Lessons 80: Rest
+==================================================
+...spred | function (a, b, ...rest) //rest return []

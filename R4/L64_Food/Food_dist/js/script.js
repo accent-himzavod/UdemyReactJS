@@ -103,6 +103,7 @@ window.addEventListener('DOMContentLoaded',() => {
             seconds.innerHTML = getZero(remTime.seconds);                
          }  
     }   
+
     setClock('.timer',deadLine);
 
     //MODAL
@@ -158,18 +159,62 @@ window.addEventListener('DOMContentLoaded',() => {
 
     window.addEventListener('scroll', openModalByScrol);
 
+    class MenuItem{        
+        constructor(imgSrc, imgAlt, title, describe, price, parentSelector){
+            this.imgSrc = imgSrc;
+            this.imgAlt = imgAlt;
+            this.title = title;
+            this.describe = describe;
+            this.price = price;
+            this.currency = 27;
+            this.convertToUAH();
+            this.parent = document.querySelector(parentSelector);
+        }
 
-    const names = document.querySelectorAll(".list-item__title");
-    const desc = document.querySelectorAll(".list-item__specifications-text");
-    const prices = document.querySelectorAll(".price__value");
-    const pricesDesc = document.querySelectorAll(".text-sm");
-    let resultTxt = "";
-    console.log(names.forEach((prodName, i)=>{resultTxt += `${prodName.textContent.split(' ').join(' ').split('\n').join('').trim()};${desc[i].textContent.split(' ').join(' ').split('\n').join('').trim()};${prices[i].textContent};${pricesDesc[i].textContent}\n`;}));
+        convertToUAH(){
+            this.price = this.price * this.currency;
+        }
 
-    const arr = [document.querySelectorAll(".list-item__title"),document.querySelectorAll(".list-item__specifications-text"),document.querySelectorAll(".price__value"),document.querySelectorAll(".text-sm")];
+        render(){
+            const element = document.createElement('div');
+            element.innerHTML = `
+            <div class="menu__item">
+                <img src=${this.imgSrc} alt=${this.imgAlt}>
+                <h3 class="menu__item-subtitle">${this.title}</h3>
+                <div class="menu__item-descr">${this.describe}</div>
+                <div class="menu__item-divider"></div>
+                <div class="menu__item-price">
+                    <div class="menu__item-cost">Цена:</div>
+                    <div class="menu__item-total"><span>${this.price}</span> грн/день</div>
+                </div>
+            </div>`;
+            this.parent.append(element);
+        }
+    }
 
-    const getHot = (arr)=>{let rt = ''; arr[0].forEach((prodName, i)=>{rt += `${arr[0][i].textContent.split(' ').join(' ').split('\n').join('').trim()};${arr[1][i].textContent.split(' ').join(' ').split('\n').join('').trim()};${arr[2][i].textContent.split(' ').join(' ').split('\n').join('').trim()} \n`;}); return rt;};getHot([document.querySelectorAll(".list-item__title"),document.querySelectorAll(".list-item__specifications-text"),document.querySelectorAll(".price__value"),document.querySelectorAll(".text-sm")])
+    // const menuItem = new MenuItem(
+    new MenuItem(
+        "img/tabs/vegy.jpg",
+        "vegy",
+        'Меню "Фитнес"',
+        'Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов. Продукт активных и здоровых людей. Это абсолютно новый продукт с оптимальной ценой и высоким качеством!',
+        20,
+        '.menu .container').render();
+    //menuItem.render();
 
+    new MenuItem(
+        "img/tabs/elite.jpg",
+        "elite",
+        'Меню “Премиум”',
+        'В меню “Премиум” мы используем не только красивый дизайн упаковки, но и качественное сполнение блюд. Красная рыба, морепродукты, фрукты - ресторанное меню без похода в ресторан!',
+        15,
+        '.menu .container').render();
 
-    resultTxt = (arr)=>{let rt; arr[0].forEach((prodName, i)=>{rt += `${arr[0][i].textContent}`;}); return rt}
+    new MenuItem(
+        "img/tabs/post.jpg",
+        "post",
+        'Меню "Постное"',
+        'ВПостное” - это тщательный подбор ингредиентов: полное отсутствие продуктов животного происхождения, молоко из миндаля, овса, кокоса или гречки, правильное количество белков за счет тофу и импортных вегетарианских стейков. ',
+        17,
+        '.menu .container').render();    
 });
