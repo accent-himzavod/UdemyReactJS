@@ -76,3 +76,4 @@ new MenuItem(a, b, '.container').render();
 Lessons 80: Rest
 ==================================================
 ...spred | function (a, b, ...rest) //rest return []
+
