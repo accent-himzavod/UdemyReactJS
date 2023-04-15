@@ -210,7 +210,7 @@ window.addEventListener('DOMContentLoaded',() => {
         20,
         '.menu .container',
         "menu__item",
-        "disp"
+        "disp"        
         ).render();
     //menuItem.render();
 
