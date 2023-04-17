@@ -135,7 +135,7 @@ window.addEventListener('DOMContentLoaded',() => {
     modalClose.addEventListener('click', closeModal)
     //bg
     modal.addEventListener('click',(e) => {        
-        if (e.target === modal) {
+        if (e.target === modal || e.target.getAttribute('data-modal_close') == '') {
             closeModal();
         }
     });
@@ -232,81 +232,116 @@ window.addEventListener('DOMContentLoaded',() => {
         17,
         '.menu .container',
         "menu__item"
-        ).render();    
-});
+    ).render();   
+    
+    //Forms
+    //1-FormData
+    //2-XMLHttpRequest
+    const forms = document.querySelectorAll('form');
 
-//Forms
-//1-FormData
-//2-XMLHttpRequest
-const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+        postJsonData(form);
+    });
 
-forms.forEach(form => {
-    postJsonData(form);
-});
+    const message = {
+        success: 'Success!',
+        // loading: 'loading...',
+        loading: './img/form/spinner.svg',
+        failure: 'error!'
+    }
 
-const message = {
-    success: 'Success!',
-    loading: 'loading...',
-    failure: 'error!'
-}
+    function postFormData(form){
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            const statusMessage = document.createElement('div');
+            statusMessage.classList.add('status');
+            statusMessage.textContent = message.loading;       
+            form.append(statusMessage);        
+            const request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            //  request.setRequestHeader('Content-Type', 'multipart/form-data'); //Don't use when XMLHttpRequest + FormData
+            const formData = new FormData(form);
+            request.send(formData);
+            request.addEventListener('load', ()=>{
+                if (request.status === 200){
+                    console.log(request.response);
+                    statusMessage.textContent = message.success;
+                    form.reset();
+                    setTimeout(()=>{
+                        statusMessage.remove();
+                    },2000);
+                } else {
+                    statusMessage.textContent = message.failure;
+                }
+            });        
+        });    
+    }
 
-function postFormData(form){
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const statusMessage = document.createElement('div');
-        statusMessage.classList.add('status');
-        statusMessage.textContent = message.loading;
-        form.append(statusMessage);        
-        const request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        //  request.setRequestHeader('Content-Type', 'multipart/form-data'); //Don't use when XMLHttpRequest + FormData
-        const formData = new FormData(form);
-        request.send(formData);
-        request.addEventListener('load', ()=>{
-            if (request.status === 200){
-                console.log(request.response);
-                statusMessage.textContent = message.success;
-                form.reset();
-                setTimeout(()=>{
-                    statusMessage.remove();
-                },2000);
-            } else {
-                statusMessage.textContent = message.failure;
-            }
-        });        
-    });    
-}
-
-function postJsonData(form){
-    form.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const statusMessage = document.createElement('div');
-        statusMessage.classList.add('status');
-        statusMessage.textContent = message.loading;
-        form.append(statusMessage);
+    function postJsonData(form){
+        form.addEventListener('submit',(e)=>{
+            e.preventDefault();
+            // const statusMessage = document.createElement('div');
+            // statusMessage.classList.add('status');
+            // statusMessage.textContent = message.loading;
+            const statusMessage = document.createElement('img');
+            statusMessage.src = message.loading;
+            statusMessage.style.cssText = `
+                display: block;
+                margin: 0 auto;
+            `;
+            // form.append(statusMessage);   
+            form.insertAdjacentElement('afterend',statusMessage);     
         
-        const request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        //  request.setRequestHeader('Content-Type', 'multipart/form-data'); //Don't use when XMLHttpRequest + FormData
-        request.setRequestHeader('Content-Type', 'application/json'); //Don't use when XMLHttpRequest + FormData
-        const formData = new FormData(form);
-        const obj = {};
-        formData.forEach(function(value,key){
-            obj[key] = value;
-        });
-        const json = JSON.stringify(obj);
-        request.send(json);
-        request.addEventListener('load', ()=>{
-            if (request.status === 200){
-                console.log(request.response);
-                statusMessage.textContent = message.success;
-                form.reset();
-                setTimeout(()=>{
-                    statusMessage.remove();
-                },2000);
-            } else {
-                statusMessage.textContent = message.failure;
-            }
-        });        
-    });    
-}
+            const request = new XMLHttpRequest();
+            request.open('POST', 'server.php');
+            //  request.setRequestHeader('Content-Type', 'multipart/form-data'); //Don't use when XMLHttpRequest + FormData
+            request.setRequestHeader('Content-Type', 'application/json'); //Don't use when XMLHttpRequest + FormData
+            const formData = new FormData(form);
+            const obj = {};
+            formData.forEach(function(value,key){
+                obj[key] = value;
+            });
+            const json = JSON.stringify(obj);
+            request.send(json);
+            request.addEventListener('load', ()=>{
+                if (request.status === 200){
+                    console.log(request.response);
+                    showThanksModal(message.success);  
+                    //statusMessage.textContent = message.success;
+                    form.reset();
+                    // setTimeout(()=>{
+                         statusMessage.remove();
+                    // },2000);
+                } else {
+                    //statusMessage.textContent = message.failure;
+                    showThanksModal(message.failure);  
+                }
+            });        
+        });    
+    }
+
+    function showThanksModal(message){
+        const prevModal = document.querySelector('.modal__dialog');    
+        prevModal.classList.add('hide');
+        openModal();
+        const thanksModal = document.createElement('div');
+        thanksModal.classList.add('modal__dialog');
+        thanksModal.innerHTML = `
+            <div class="modal__content">
+                <div data-modal_close class="modal__close">&times;</div>
+                <div class="modal__title">${message}</div>
+            </div>
+        `
+        modal.append(thanksModal);
+        setTimeout(()=>{
+            thanksModal.remove();
+            prevModal.classList.add('show');
+            prevModal.classList.remove('hide');
+            closeModal();
+        },4000);
+    
+    }
+
+});
+
+
