@@ -1,13 +1,13 @@
 'use strict';
 
 const   box = document.getElementById('box'),
-        btns = document.getElementsByTagName('button'),
-        //btns = document.getElementsByTagName('button')[0],
-        //isFav = formAdd.querySelector("[type='checkbox']"),
-        crcls = document.getElementsByClassName('circle'),
-        wrapper = document.querySelector('.wrapper'),
-        hearts = wrapper.querySelectorAll('.heart'),	// by class
-        oneHeart = wrapper.querySelector('#heart'); // by Id  
+	btns = document.getElementsByTagName('button'),
+	//btns = document.getElementsByTagName('button')[0],
+	//isFav = formAdd.querySelector("[type='checkbox']"),
+	crcls = document.getElementsByClassName('circle'),
+	wrapper = document.querySelector('.wrapper'),
+	hearts = wrapper.querySelectorAll('.heart'),	// by class
+	oneHeart = wrapper.querySelector('#heart'); // by Id  
 
 //Style
 box.style.backgroundColor = 'blue';
@@ -17,11 +17,11 @@ btns[0].style.borderRadius = '100%';
 crcls[1].style.backgroundColor = 'red';
 
 for (let i = 0; i < hearts.length; i++) {
-    hearts[i].style.backgroundColor = 'blue';
+	hearts[i].style.backgroundColor = 'blue';
 }
 
 hearts.forEach(item => {
-    item.style.backgroundColor = 'red';
+	item.style.backgroundColor = 'red';
 });
 //Create elements
 const div = document.createElement('div');
@@ -53,15 +53,15 @@ div.insertAdjacentHTML("beforeend",'<h2>Hello!</h2>');
 //==================================================================
 //Events
 const deleteElement = (event) => {
-    e.target.remove();
+	e.target.remove();
 };
 btns.forEach(btn => {
-    btn.addEventListener('click',(event) => {
-        console.log(event.target);
-        console.log(event.currentTarget);
-        console.log(event.type);
-        //event.target.remove();
-    })
+	btn.addEventListener('click',(event) => {
+		console.log(event.target);
+		console.log(event.currentTarget);
+		console.log(event.type);
+		//event.target.remove();
+	})
 }); 
 btns[0].addEventListener('click', deleteElement, {once: true});
 btns[1].removeEventListener('click', deleteElement);
@@ -69,7 +69,7 @@ btns[1].removeEventListener('click', deleteElement);
 //Prevent Default Events
 let link = document.querySelector('a');
 link.addEventListener('click', function(event){
-    event.preventDefault();
+	event.preventDefault();
 });
 //==================================================================
 //DOM movement
@@ -88,9 +88,9 @@ document.querySelector('[data-current="3"]').previousSibling;
 document.querySelector('[data-current="3"]').previousElementSibling
 //document body childElements
 for (node of document.body.childNodes) {
-    if (node.nodeName == '#text') {
-        continue;
-    }
-    console.log(node);
+	if (node.nodeName == '#text') {
+		continue;
+	}
+	console.log(node);
 }
 
