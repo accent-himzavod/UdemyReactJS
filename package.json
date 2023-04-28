@@ -1,0 +1,22 @@
+{
+  "name": "udemy_js_react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./R4/L64_Food/Food_dist/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/accent-himzavod/UdemyReactJS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/accent-himzavod/UdemyReactJS/issues"
+  },
+  "homepage": "https://github.com/accent-himzavod/UdemyReactJS#readme",
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}

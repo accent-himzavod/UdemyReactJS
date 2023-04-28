@@ -1,0 +1,8 @@
+=======================================
+JSON-Server (npm)
+=======================================
+npm init
+npm i json-server               //local
+npm install json-server -g      //global
+npm install json-server --save-dev      //global
+npm i                           //fetch packages
